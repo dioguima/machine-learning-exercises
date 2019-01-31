@@ -34,11 +34,11 @@ def draw_clusters(biased_dataset, predictions, cmap='viridis'):
 def clustering_errors(k, data):
     kmeans = KMeans(n_clusters=k).fit(data)
     predictions = kmeans.predict(data)
-    #cluster_centers = kmeans.cluster_centers_
-    # errors = [mean_squared_error(row, cluster_centers[cluster]) for row, cluster in zip(data.values, predictions)]
-    # return sum(errors)
-    silhouette_avg = silhouette_score(data, predictions)
-    return silhouette_avg
+    cluster_centers = kmeans.cluster_centers_
+     errors = [mean_squared_error(row, cluster_centers[cluster]) for row, cluster in zip(data.values, predictions)]
+    return sum(errors)
+    #silhouette_avg = silhouette_score(data, predictions)
+    #return silhouette_avg
 
 def sparse_clustering_errors(k, data):
     kmeans = KMeans(n_clusters=k).fit(data)
